@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
+import alarmSound from './asset/alarm.mp3'
 
 function App() {
   const [totalTime, setTotalTime] = useState(60) // 분 단위
@@ -10,10 +11,27 @@ function App() {
   
   const timerRef = useRef(null);
 
-  // 알림 표시 함수 (화면 알림만 수행)
+  // 알림 표시 함수 (화면 알림 + 소리 재생 2회)
   const triggerNotification = (message) => {
     setNotification(message);
     setTimeout(() => setNotification(null), 3000); // 3초 후 사라짐
+
+    // 오디오 재생 로직 (2번 반복)
+    const audio = new Audio(alarmSound);
+    let playCount = 0;
+
+    const playAudio = () => {
+      audio.play().catch(error => console.error("Audio playback failed:", error));
+    };
+
+    audio.addEventListener('ended', () => {
+      playCount++;
+      if (playCount < 2) {
+        playAudio();
+      }
+    });
+
+    playAudio();
   };
 
   // 초기 시간 설정
@@ -86,7 +104,7 @@ function App() {
       )}
 
       <header className="app-header">
-        <h1>자격증 평가 타이머</h1>
+        <h1>타이머</h1>
       </header>
       
       <main className="glass-card">
