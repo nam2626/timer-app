@@ -1,0 +1,243 @@
+:root {
+  --primary-color: #FFD700; /* 나노바나나 옐로우 */
+  --secondary-color: #333333;
+  --bg-gradient: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+  --text-color: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --danger-color: #ff4757;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  position: relative;
+}
+
+/* 알림 배너 애니메이션 */
+.notification-banner {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color);
+  color: #000;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  animation: slideDown 0.5s forwards;
+  z-index: 100;
+  width: max-content;
+}
+
+@keyframes slideDown {
+  from { top: -80px; opacity: 0; }
+  to { top: 20px; opacity: 1; }
+}
+
+.alert-active .glass-card {
+  box-shadow: 0 0 30px var(--primary-color);
+  border-color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+/* 헤더 & 로고 */
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+}
+
+/* 글래스모피즘 카드 */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* 타이머 디스플레이 */
+.timer-display {
+  width: 100%;
+  text-align: center;
+}
+
+.time-text {
+  font-size: 6rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums; /* 숫자 너비 고정 */
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--primary-color);
+  transition: width 1s linear;
+}
+
+/* 컨트롤 영역 */
+.controls-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.settings-group {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+input, select {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,0.3);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 5px;
+  width: 80px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+select {
+  width: 120px;
+  cursor: pointer;
+}
+
+select option {
+  background: #333;
+}
+
+input:focus, select:focus {
+  border-color: var(--primary-color);
+}
+
+/* 버튼 스타일 */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #000;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  flex: 2;
+}
+
+.btn-primary.pause {
+  background-color: #fff;
+  color: #000;
+}
+
+.btn-secondary {
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  flex: 1;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255,255,255,0.2);
+}
