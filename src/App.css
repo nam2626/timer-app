@@ -196,6 +196,26 @@ input:focus, select:focus {
   border-color: var(--primary-color);
 }
 
+/* 토글 스위치 스타일 */
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#sound-toggle {
+  width: auto;
+  cursor: pointer;
+}
+
+.toggle-label {
+  font-size: 1rem !important;
+  color: #fff !important;
+  cursor: pointer;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
 /* 버튼 스타일 */
 .button-group {
   display: flex;
