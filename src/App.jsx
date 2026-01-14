@@ -43,12 +43,11 @@ function App() {
     }
   };
 
-  // 초기 시간 설정
+  // 초기 시간 설정 (시험 시간이 변경될 때만 실행)
   useEffect(() => {
-    if (!isRunning) {
-      setTimeLeft(totalTime * 60);
-    }
-  }, [totalTime, isRunning]);
+    setTimeLeft(totalTime * 60);
+    setIsRunning(false);
+  }, [totalTime]);
 
   // 프리셋 변경 핸들러
   const handlePresetChange = (e) => {
@@ -206,7 +205,7 @@ function App() {
               className={`btn-primary ${isRunning ? 'pause' : 'start'}`}
               onClick={handleStartPause}
             >
-              {isRunning ? '일시정지' : '시작'}
+              {isRunning ? '일시정지' : (timeLeft < totalTime * 60 && timeLeft > 0 ? '재개' : '시작')}
             </button>
             <button className="btn-secondary" onClick={handleReset}>
               초기화

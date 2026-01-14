@@ -22,7 +22,7 @@ body {
 
 #root {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -142,9 +142,10 @@ h1 {
 
 .settings-group {
   display: flex;
-  justify-content: space-around;
-  gap: 1rem;
-  padding: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1.5rem 1rem;
   background: rgba(0,0,0,0.2);
   border-radius: 16px;
 }
@@ -184,7 +185,7 @@ input, select {
 }
 
 select {
-  width: 120px;
+  width: 200px;
   cursor: pointer;
 }
 
